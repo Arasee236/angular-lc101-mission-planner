@@ -7,9 +7,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExperimentsComponent implements OnInit {
 
+  experiments = ["Mars soil sample","Plant growth in habitat","Human bone density"];
   constructor() { }
 
   ngOnInit() {
   }
+
+  itemBeingEdited:String = "";
+  add(experimentName: string) {
+  
+    if(!this.experiments.includes(experimentName)){
+    this.experiments.push(experimentName);}
+  
+  }
+
+ remove(experimentName: string){
+    let index = this.experiments.indexOf(experimentName);
+    this.experiments.splice(index,1);
+  }
+
+edit(experimentName: string){
+    this.itemBeingEdited = experimentName;
+  }
+  save(updatedName: string,experimentName: string){
+    let index = this.experiments.indexOf(experimentName);
+    this.experiments[index] = updatedName;
+    this.itemBeingEdited = "";
+  }
+
 
 }

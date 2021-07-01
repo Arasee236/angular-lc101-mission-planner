@@ -18,9 +18,21 @@ export class CrewComponent implements OnInit {
   ngOnInit() {
   }
   memberBeingEdited:object = null;
+  
   add(memberName: string, isFirst: boolean) {
-    this.crew.push({name: memberName, firstMission: isFirst});
+
+    let memberExist = false;
+    for (let i=0;i<this.crew.length;i++){
+      if(this.crew[i]["name"] === memberName){
+        memberExist =true;
+      }}
+    if(memberName != "" && memberExist === false){
+    this.crew.push({name: memberName, firstMission: isFirst});}
+  
   }
+  
+    
+  
 
   remove(member : object){
     let index = this.crew.indexOf(member);
