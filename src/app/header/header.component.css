@@ -4,10 +4,11 @@
 
 h2 {
     text-align: center;
-    color: brown;
+    color: rgb(60, 30, 230);
 }
 
 h1 {
     text-align: center;
     text-decoration: underline;
+    color : brown;
 }

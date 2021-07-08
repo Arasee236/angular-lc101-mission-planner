@@ -21,20 +21,39 @@ export class EquipmentComponent implements OnInit {
    cargoMass: number = 0;
    maximumAllowedMass: number = 2000;
    maxItems: number = 10;
-
+   
    constructor() { }
 
    ngOnInit() { }
 
    // Code your addItem function here:
    addItem(equipment: object):boolean {
+
+    
+    
+     //let occurence = this.equipmentItems.findIndex(equipment => equipment === equipment);
+    if(!this.isNotEligible(equipment))
+    {   
     this.cargoHold.push(equipment);
     this.cargoMass += this.equipmentItems[this.equipmentItems.indexOf(equipment)]['mass'];
+    }
     return this.cargoMass >= this.maximumAllowedMass-200;
    }
 
-   isEligible(item: object): boolean {
-     if(this.cargoHold.length === this.maxItems || this.cargoMass + item['mass'] > this.maximumAllowedMass){
+   isNotEligible(item: object): boolean {
+    let occurence =0;
+    for(let i =0;i<= this.cargoHold.length;i++)
+    {
+      
+      if(this.cargoHold[i] === item)
+      {
+        occurence +=1;
+      
+      }
+    }
+   
+
+     if( occurence >= 2 ||this.cargoHold.length === this.maxItems || this.cargoMass + item['mass'] > this.maximumAllowedMass){
        return true;
      }
      else return false;
