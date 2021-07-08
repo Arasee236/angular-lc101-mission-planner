@@ -32,11 +32,8 @@ export class EquipmentComponent implements OnInit {
     
     
      //let occurence = this.equipmentItems.findIndex(equipment => equipment === equipment);
-    if(!this.isNotEligible(equipment))
-    {   
-    this.cargoHold.push(equipment);
-    this.cargoMass += this.equipmentItems[this.equipmentItems.indexOf(equipment)]['mass'];
-    }
+     this.cargoHold.push(equipment);
+     this.cargoMass += this.equipmentItems[this.equipmentItems.indexOf(equipment)]['mass'];
     return this.cargoMass >= this.maximumAllowedMass-200;
    }
 
@@ -48,7 +45,6 @@ export class EquipmentComponent implements OnInit {
       if(this.cargoHold[i] === item)
       {
         occurence +=1;
-      
       }
     }
    
